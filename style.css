@@ -1,3 +1,156 @@
-*{
-    background-color: orchid;
+body {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS0Cs66uE9Ur70Mk0FEmm4Wrs3HA3vUJnXLg&usqp=CAU);    
+    background-size: cover;
+    height: 100vh;
+   
 }
+
+h1 {
+    font-family: 'Stalinist One', cursive;
+} 
+
+h3 {
+    font-family: 'Stalinist One', cursive;
+    color: gray;
+  
+}
+
+
+.modal {
+    background-color:black;
+    color: white;
+    padding: 30px;
+    width: 50vw;          
+    max-width: 500px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    top:45%;
+    transform: translateY(-45%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: none;
+}
+
+.modal.open {
+    display: block;
+}
+
+.close {
+    width: 30px;
+    height: 30px;  
+    background-color: black;
+    color: white;
+    display: block;
+    float: right;
+    position: relative;
+    top: -170px;
+    right: -10px;
+
+}
+
+.container{
+    display: flex;
+    min-width: 1000px;
+    
+    
+}
+
+.grid-user {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blue;
+    margin: 20px;
+}
+
+.grid div {
+    width: 40px;
+    height: 40px;
+}
+
+.grid-computer {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color:darkblue;
+    margin: 20px;
+}
+
+.grid-display {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    background-color:blue;
+}
+
+.ship div {
+    width: 40px;
+    height: 40px;
+}
+
+.destroyer-container {
+    width: 80px;
+    height: 40px;
+    background-color: green;
+    margin: 10px;  
+    display: flex;
+  
+}
+
+.submarine-container {
+    width: 120px;
+    height: 40px;
+    background-color:plum;
+    margin: 10px;
+    display: flex;
+}
+
+.cruiser-container {
+    width: 120px;
+    height: 40px;
+    background-color: purple;
+    margin: 10px;
+    display: flex;
+}
+
+.battleship-container {
+    width: 160px;
+    height: 40px;
+    background-color:orange;
+    margin: 10px;
+    display: flex;
+}
+
+.carrier-container {
+    width: 200px;
+    height: 40px;
+    background-color:grey;
+    margin: 10px;
+    display: flex;
+   
+}
+
+.destroyer {
+    background-color: green;
+}
+
+.submarine {
+    background-color:plum;
+}
+
+.cruiser {
+    background-color: purple;
+}
+
+.battleship {
+    background-color: orange;
+}
+
+.carrier {
+    background-color: gray;
+}
+
