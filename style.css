@@ -31,6 +31,7 @@ h3 {
     right: 0;
     margin: 0 auto;
     display: none;
+    font-family: 'Stalinist One', cursive;
 }
 
 .modal.open {
@@ -45,7 +46,7 @@ h3 {
     display: block;
     float: right;
     position: relative;
-    top: -170px;
+    top: -450px;
     right: -10px;
 
 }
@@ -91,7 +92,7 @@ h3 {
     width: 40px;
     height: 40px;
 }
-
+/* User Ships */
 .destroyer-container {
     width: 80px;
     height: 40px;
@@ -134,6 +135,55 @@ h3 {
    
 }
 
+/* Rotated User Ships */
+.destroyer-container-vertical {
+    width: 40px;
+    height: 80px;
+    background-color: green;
+    margin: 10px;  
+    display: flex;
+    flex-wrap: wrap;
+  
+}
+
+.submarine-container-vertical {
+    width: 40px;
+    height: 120px;
+    background-color:plum;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cruiser-container-vertical {
+    width: 40px;
+    height: 120px;
+    background-color:purple;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.battleship-container-vertical {
+    width: 40px;
+    height: 160px;
+    background-color:orange;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carrier-container-vertical {
+    width: 40px;
+    height: 200px;
+    background-color:grey;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+/* Computer Ships */
 .destroyer {
     background-color: green;
 }
@@ -154,3 +204,10 @@ h3 {
     background-color: gray;
 }
 
+.kaboom {
+    background-color: red;
+}
+
+.splash {
+    background-color: white;
+}
