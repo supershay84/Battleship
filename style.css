@@ -9,7 +9,7 @@ h1 {
     font-family: 'Stalinist One', cursive;
 } 
 
-h3 {
+h3, h4 {
     font-family: 'Stalinist One', cursive;
     color: gray;
   
@@ -185,11 +185,11 @@ h3 {
 
 /* Computer Ships */
 .destroyer {
-    background-color: green;
+    background-color: green;   
 }
 
 .submarine {
-    background-color:plum;
+    background-color:plum;  
 }
 
 .cruiser {
@@ -204,8 +204,9 @@ h3 {
     background-color: gray;
 }
 
+/* GAMEPLAY */
 .kaboom {
-    background-color: red;
+    background-color: red;  
 }
 
 .splash {

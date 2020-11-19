@@ -32,6 +32,16 @@ const width = 10;
 let isHorizontal = true;
 let isGameOver = false;
 let currentPlayer = "user";
+let destroyerCount = 0;
+let submarineCount = 0;
+let cruiserCount = 0;
+let battleshipCount = 0;
+let carrierCount = 0;
+let computerDestroyerCount = 0;
+let computerSubmarineCount = 0;
+let computerCruiserCount = 0;
+let computerBattleshipCount = 0;
+let computerCarrierCount = 0;
 
 
 
@@ -126,30 +136,31 @@ generateShip(shipArray[4]);
 
 // ROTATE SHIPS //
 
-rotateShip = () => {
-    if (isHorizontal){
-        destroyer.classList.toggle("destroyer-container-vertical");
-        submarine.classList.toggle("submarine-container-vertical");
-        cruiser.classList.toggle("cruiser-container-vertical");
-        battleship.classList.toggle("battleship-container-vertical");
-        carrier.classList.toggle("carrier-container-vertical");
-        isHorizontal = false;
-        return;
-    }
-    if (!isHorizontal){
-        destroyer.classList.toggle("destroyer-container");
-        submarine.classList.toggle("submarine-container");
-        cruiser.classList.toggle("cruiser-container");
-        battleship.classList.toggle("battleship-container");
-        carrier.classList.toggle("carrier-container");
-        isHorizontal = true;
-        return;
-    }
-}
+// rotateShip = () => {
+//     if (isHorizontal){
+//         destroyer.classList.toggle("destroyer-container-vertical");
+//         submarine.classList.toggle("submarine-container-vertical");
+//         cruiser.classList.toggle("cruiser-container-vertical");
+//         battleship.classList.toggle("battleship-container-vertical");
+//         carrier.classList.toggle("carrier-container-vertical");
+//         isHorizontal = false;
+//         return;
+//     }
+//     if (!isHorizontal){
+//         destroyer.classList.toggle("destroyer-container");
+//         submarine.classList.toggle("submarine-container");
+//         cruiser.classList.toggle("cruiser-container");
+//         battleship.classList.toggle("battleship-container");
+//         carrier.classList.toggle("carrier-container");
+//         isHorizontal = true;
+//         return;
+//     }
+// }
 
 
 
 // USER SHIPS //
+
 generateShip = (ship) => {
     let randomDirection = Math.floor(Math.random() * ship.directions.length);
     let current = ship.directions[randomDirection];
@@ -182,7 +193,7 @@ playGame = () => {
     if (currentPlayer === "user") {
         turnDisplay.innerHTML = "Your Turn"
         computerSquares.forEach(square => square.addEventListener("click", function(e){
-            showSquare(square)
+            showSquare(square);
         }))
     }
     if (currentPlayer === "computer") {
@@ -190,46 +201,37 @@ playGame = () => {
         setTimeout (computerTurn, 2000);
     }
 }
-let destroyerCount = 0;
-let submarineCount = 0;
-let cruiserCount = 0;
-let battleshipCount = 0;
-let carrierCount = 0;
+
+
 
 
 showSquare = (square) => {
-  if (!square.classList.contains("kaboom")){
+  if (!square.classList.contains("kaboom") && currentPlayer === "user" && !isGameOver) {
     if (square.classList.contains("destroyer")) destroyerCount++
     if (square.classList.contains("submarine")) submarineCount++
     if (square.classList.contains("cruiser")) cruiserCount++
     if (square.classList.contains("battleship")) battleshipCount++
-    if (square.classList.contains("carrierr")) carrierCount++
+    if (square.classList.contains("carrier")) carrierCount++
   }
   if (square.classList.contains("taken")) {
-        square.classList.add("kaboom")
+    square.classList.add("kaboom")
+    } else {
+    square.classList.add("splash")
     }
-  if (!square.classList.contains("taken")) {
-        square.classList.add("splash")
-    }
+    determineWin()
    currentPlayer= "computer";
    playGame();
 }
 
-let compDestroyerCount = 0;
-let compSubmarineCount = 0;
-let compCruiserCount = 0;
-let compBattleshipCount = 0;
-let compCarrierCount = 0;
-
 computerTurn = () => {
     let random = Math.floor(Math.random() * userSquares.length)
     if (!userSquares[random].classList.contains("kaboom")) {
-        if (userSquares[random].classList.contains("destroyer")) destroyerCount++
-        if (userSquares[random].classList.contains("submarine")) submarineCount++
-        if (userSquares[random].classList.contains("cruiser")) cruiserCount++
-        if (userSquares[random].classList.contains("battleship")) battleshipCount++
-        if (userSquares[random].classList.contains("carrierr")) carrierCount++
-    }
+        if (userSquares[random].classList.contains("destroyer")) computerDestroyerCount++
+        if (userSquares[random].classList.contains("submarine")) computerSubmarineCount++
+        if (userSquares[random].classList.contains("cruiser")) computerCruiserCount++
+        if (userSquares[random].classList.contains("battleship")) computerBattleshipCount++
+        if (userSquares[random].classList.contains("carrier")) computerCarrierCount++
+    
     if (userSquares[random].classList.contains("taken")){
         userSquares[random].classList.add("kaboom")
     }
@@ -239,65 +241,74 @@ computerTurn = () => {
     currentPlayer = "user"
     turnDisplay.innerHTML = "Your Turn" 
 }
+ determineWin();
+}
+
 
 //  WIN LOGIC //
 
 determineWin = () => {
     if (destroyerCount === 2) {
-         alert("You sunk the enemy Destroyer!")
-        destroyerCount = 20
+        infoDisplay.innerHTML = "You sunk the enemy Destroyer!"
+        destroyerCount = 10
     }
     if (submarineCount === 3) {
-        alert("You sunk the enemy Submarine!")
-        submarineCount = 20
+        infoDisplay.innerHTML = "You sunk the enemy Submarine!"
+        submarineCount = 10
     }
     if (cruiserCount === 3) {
-        alert("You sunk the enemy Cruiser!")
-        cruiserCount = 20
+        infoDisplay.innerHTML = "You sunk the enemy Cruiser!"
+        cruiserCount = 10
     }
     if (battleshipCount === 4) {
-        alert("You sunk the enemy Battleship!")
-        battleshipCount = 20
+        infoDisplay.innerHTML = "You sunk the enemy Battleship!"
+        battleshipCount = 10
     }
     if (carrierCount === 5) {
-        alert("You sunk the enemy Carrier!")
-        carrierCount = 20
+        infoDisplay.innerHTML = "You sunk the enemy Carrier!"
+        carrierCount = 10
     }
-    if (compDestroyerCount === 2) {
-        alert("You sunk the enemy Destroyer!")
-        compDestroyerCount = 20
+    if (computerDestroyerCount === 2) {
+        infoDisplay.innerHTML = "Your Destroyer was sunk!"
+        computerDestroyerCount = 10
     }
-    if (compSubmarineCount === 3) {
-        alert("You sunk the enemy Submarine!")
-        compSubmarineCount = 20
+    if (computerSubmarineCount === 3) {
+        infoDisplay.innerHTML = "Your Submarine was sunk!"
+        computerSubmarineCount = 10
     }
-    if (compCruiserCount === 3) {
-        alert("You sunk the enemy Cruiser!")
-        compCruiserCount = 20
+    if (computerCruiserCount === 3) {
+        infoDisplay.innerHTML = "Your Cruiser was sunk!"
+        computerCruiserCount = 10
     }
-    if (compBattleshipCount === 4) {
-       alert("You sunk the enemy Battleship!")
-        compBattleshipCount = 20
+    if (computerBattleshipCount === 4) {
+       infoDisplay.innerHTML = "Your Battleship was sunk!"
+        computerBattleshipCount = 10
     }
-    if (compCarrierCount === 5) {
-        alert("You sunk the enemy Carrier!")
-        compCarrierCount = 20
+    if (computerCarrierCount === 5) {
+        infoDisplay.innerHTML = "Your Carrier was sunk!"
+        computerCarrierCount = 10
     }
-    if ((destroyerCount + submarineCount + cruiserCount + battleshipCount + carrierCount) === 100) {
-        alert("You destroyed the enemy fleet! YOU WIN!")
-        gameOver()
+    
+    if ((destroyerCount + submarineCount + cruiserCount + battleshipCount + carrierCount) === 50) {
+        infoDisplay.innerHTML = "You destroyed the enemy fleet! YOU WIN!"
+        gameOver();
     }
-    if ((compDestroyerCount + compSubmarineCount + compCruiserCount + compBattleshipCount + compCarrierCount) === 100) {
-       alert("The computer destroyed your fleet! YOU Lose!")
-        gameOver()
+    if ((computerDestroyerCount + computerSubmarineCount + computerCruiserCount + computerBattleshipCount + computerCarrierCount) === 50) {
+        infoDisplay.innerHTML = "The computer destroyed your fleet! YOU Lose!"
+        gameOver();
     }
-
 }
+
+
 
 gameOver = () => {
     isGameOver = true
     startButton.removeEventListener("click", playGame)
-}
+
+ }
+
+
+
  
 
 // //=======================//
@@ -305,8 +316,10 @@ gameOver = () => {
 // //=======================//
 beginButton.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
-rotateButton.addEventListener("click", rotateShip);
 startButton.addEventListener("click", playGame);
+// rotateButton.addEventListener("click", rotateShip);
+
+
 
 
 
@@ -322,18 +335,10 @@ startButton.addEventListener("click", playGame);
 // // DRAG AND DROP FUNCTIONS//
 // // web.dev/drag-and-drop //
 
-
 // let selectedShipNameWithIndex
 // let draggedShip
 // let draggedShipLength
 
-// ships.forEach(ship => ship.addEventListener("dragstart", dragStart));
-// userSquares.forEach(square => square.addEventListener("dragstart", dragStart));
-// userSquares.forEach(square => square.addEventListener("dragover", dragOver));
-// userSquares.forEach(square => square.addEventListener("dragenter", dragEnter));
-// userSquares.forEach(square => square.addEventListener("dragleave", dragLeave));
-// userSquares.forEach(square => square.addEventListener("drop", dragDrop));
-// userSquares.forEach(square => square.addEventListener("dragend", dragEnd));
 
 // ships.forEach(ship => ship.addEventListener("mousedown", (e) => {
 //     selectedShipNameWithIndex = e.target.id  
@@ -344,7 +349,7 @@ startButton.addEventListener("click", playGame);
 
 // dragStart = () =>  {
 //     draggedShip = this
-//     draggedShipLength = draggedShip.length
+//     draggedShipLength = document.querySelectorAll(`.${draggedShip.classList[1]} > *`).length;
 //     console.log(draggedShip)
 // }
 
@@ -361,8 +366,8 @@ startButton.addEventListener("click", playGame);
 // }
 
 // dragDrop = () => {
-//     let shipNameWithLastId = draggedShip.lastChild.id
-//     let shipClass = shipNameWithLastId.slice(0, -2)
+//     let shipNameWithLastId = draggedShip.lastElementChild.id
+//     let shipClass = shipNameWithLastId .slice(0, -2)
 //     console.log(shipClass)
 //     let lastShipIndex = parseInt(shipNameWithLastId.substr(-1)) // parseInt() Converts a string to number//
 //     let shipLastId = lastShipIndex + parseInt(this.dataset.id)
@@ -383,11 +388,21 @@ startButton.addEventListener("click", playGame);
 //         }
 //     } else return;
     
-//     displayGrid.removeChild(draggedShip);
+//    displayGrid.removeChild(draggedShip);
 // }
 
 // dragEnd = () =>  {
 
 // }
+
+// ships.forEach(ship => ship.addEventListener("dragstart", dragStart));
+// userSquares.forEach(square => square.addEventListener("dragstart", dragStart));
+// userSquares.forEach(square => square.addEventListener("dragover", dragOver));
+// userSquares.forEach(square => square.addEventListener("dragenter", dragEnter));
+// userSquares.forEach(square => square.addEventListener("dragleave", dragLeave));
+// userSquares.forEach(square => square.addEventListener("drop", dragDrop));
+// userSquares.forEach(square => square.addEventListener("dragend", dragEnd));
+
+
 
 
