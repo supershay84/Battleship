@@ -10,35 +10,40 @@
     
 </head>
 <body>
+    <div class="title">
     <h1>BATTLESHIP</h1>
-    <button class="begin-game">Begin</button>
+    </div>  
+    <div class="buttons">
+        <button id="begin-game">How to Play</button>
+        <button id="start">Start Game</button>
+    </div>
+    
 
     <!-- Modal -->
     <div class="modal">
     <h2>Welcome to Battleship!
-        Shoot missles to sink the enemy's ships.
-        Destroy the enemy's fleet in order to win.
+        Shoot missles to sink the enemy's ships by clicking a square on the opponent's game grid.
+        Destroy the enemy's fleet before they sink yours in order to win.
     </h2>
     <button class="close">X</button>
     </div>
 
 <!-- GAME GRIDS -->
     <div class="container">
-        <div class="grid grid-user"></div>
-        <div class="grid grid-computer"></div>
+        <div class="battleship-grid grid-user"></div>
+        <div class="battleship-grid grid-computer"></div>
     </div>
  
     <div class="information">
         <!-- <button id="rotate">Rotate Ships</button> -->
-        <button id="start">Start Game</button>
         <!-- <button id="shoot">Shoot Missile</button> -->
         <h3 id="turn">Your Turn</h3>
         <h4 id="info"></h4>
     </div>
 
-   
- <div class="grid-display">
-    <div class="ship destroyer-container" draggable="true">
+   <!-- <div class="container"> -->
+ <!-- <div class="grid-display"> -->
+    <!-- <div class="ship destroyer-container" draggable="true">
         <div id="destroyer-0"></div>
         <div id="destroyer-1"></div>
     </div>
@@ -69,8 +74,9 @@
        <div id="carrier-2"></div>
        <div id="carrier-3"></div>
        <div id="carrier-4"></div>
-    </div>
-  </div> 
+    </div> -->
+  <!-- </div>  -->
+<!-- </div> -->
 
 
 

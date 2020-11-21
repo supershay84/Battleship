@@ -1,0 +1,28 @@
+{
+  "name": "project-1",
+  "version": "1.0.0",
+  "description": "Two-player Battleship",
+  "main": "server.js",
+  "scripts": {
+   "start": "node server",
+   "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supershay84/Project-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supershay84/Project-1/issues"
+  },
+  "homepage": "https://github.com/supershay84/Project-1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

@@ -1,27 +1,53 @@
 body {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS0Cs66uE9Ur70Mk0FEmm4Wrs3HA3vUJnXLg&usqp=CAU);    
+    background-image: url(https://wallpapercave.com/wp/wp2874399.jpg);    
     background-size: cover;
+    background-repeat: none;
     height: 100vh;
    
 }
 
-h1 {
-    font-family: 'Stalinist One', cursive;
-} 
-
 h3, h4 {
     font-family: 'Stalinist One', cursive;
-    color: gray;
+    color: whitesmoke;
   
 }
 
+.title {
+    font-family: 'Stalinist One', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    font-size: 2rem;
+}
 
-.modal {
-    background-color:black;
-    color: white;
+.buttons {
+    display: flex;
+   justify-content: space-evenly;
+}
+
+#start:hover, #begin-game:hover {
+    background-color: transparent;
+}
+
+
+#begin-game, #start {
+    background-color:gray ;
+    font-family: 'Stalinist One', cursive;
+    font-size: 24px;
+    border-radius: 2rem;
+    cursor: grab;
+}
+
+ .modal {
+    background-color:gray;
+    color: black;
     padding: 30px;
     width: 50vw;          
     max-width: 500px;
+    display: flex;
+    min-width: 500px;
     text-align: center;
     border-radius: 4px;
     position: fixed;
@@ -46,66 +72,71 @@ h3, h4 {
     display: block;
     float: right;
     position: relative;
-    top: -450px;
+    top: -380px;
     right: -10px;
 
 }
 
+.information {
+    font-family: 'Stalinist One', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;   
+}
+
 .container{
     display: flex;
-    min-width: 1000px;
-    
-    
+    justify-content: space-evenly;
+    width: 100%;
 }
 
-.grid-user {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-wrap: wrap;
+.battleship-grid {
+    margin: 2vmin;
+    display: grid;
+    grid-template-rows: repeat(10, 4.6vmin);
+    grid-template-columns: repeat(10, 4.6vmin);
     background-color: blue;
-    margin: 20px;
 }
 
-.grid div {
-    width: 40px;
-    height: 40px;
+.grid-computer > .taken {
+    background-color: blue;
 }
 
-.grid-computer {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color:darkblue;
-    margin: 20px;
+.battleship-grid div {
+    border: 1px solid hsla(0, 0%, 100%, .2);
 }
 
 .grid-display {
-    width: 400px;
-    height: 400px;
-    margin: 20px;
-    background-color:blue;
+    display: flex;
+    background-color:blue;  
+}
+
+.ship > div {
+    width: 4.6vmin;
+    height: 4.6vmax;
+}
+   
+.taken, .ships {
+    background-color: gray;
 }
 
 .ship div {
     width: 40px;
     height: 40px;
 }
-/* User Ships */
+
+/* Ships */
 .destroyer-container {
     width: 80px;
-    height: 40px;
-    background-color: green;
+    height: 40px; 
     margin: 10px;  
     display: flex;
-  
 }
 
 .submarine-container {
     width: 120px;
     height: 40px;
-    background-color:plum;
     margin: 10px;
     display: flex;
 }
@@ -113,7 +144,6 @@ h3, h4 {
 .cruiser-container {
     width: 120px;
     height: 40px;
-    background-color: purple;
     margin: 10px;
     display: flex;
 }
@@ -121,7 +151,6 @@ h3, h4 {
 .battleship-container {
     width: 160px;
     height: 40px;
-    background-color:orange;
     margin: 10px;
     display: flex;
 }
@@ -129,17 +158,25 @@ h3, h4 {
 .carrier-container {
     width: 200px;
     height: 40px;
-    background-color:grey;
     margin: 10px;
     display: flex;
    
 }
 
+/* GAMEPLAY */
+.kaboom {
+    background-color: red !important; 
+}
+
+.splash {
+    background-color: white;
+}
+
+
 /* Rotated User Ships */
-.destroyer-container-vertical {
+/* .destroyer-container-vertical {
     width: 40px;
     height: 80px;
-    background-color: green;
     margin: 10px;  
     display: flex;
     flex-wrap: wrap;
@@ -149,7 +186,6 @@ h3, h4 {
 .submarine-container-vertical {
     width: 40px;
     height: 120px;
-    background-color:plum;
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -158,7 +194,6 @@ h3, h4 {
 .cruiser-container-vertical {
     width: 40px;
     height: 120px;
-    background-color:purple;
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -167,7 +202,6 @@ h3, h4 {
 .battleship-container-vertical {
     width: 40px;
     height: 160px;
-    background-color:orange;
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -176,7 +210,6 @@ h3, h4 {
 .carrier-container-vertical {
     width: 40px;
     height: 200px;
-    background-color:grey;
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -184,7 +217,7 @@ h3, h4 {
 }
 
 /* Computer Ships */
-.destroyer {
+/* .destroyer {
     background-color: green;   
 }
 
@@ -202,13 +235,5 @@ h3, h4 {
 
 .carrier {
     background-color: gray;
-}
+} */
 
-/* GAMEPLAY */
-.kaboom {
-    background-color: red;  
-}
-
-.splash {
-    background-color: white;
-}
