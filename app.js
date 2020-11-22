@@ -68,7 +68,9 @@ const createBoard = (grid, squares, width) => {
 createBoard(userGrid, userSquares);
 createBoard(computerGrid, computerSquares);
 
-//SHIPS//
+//==========//
+//  SHIPS   //
+//==========//
 
 const shipArray = [
     {
@@ -108,7 +110,9 @@ const shipArray = [
     },
 ];
 
-//RANDOM COMPUTER SHIPS//
+//==========================//
+//  RANDOM COMPUTER SHIPS   //
+//==========================//
 
 generateShip = (ship) => {
     let randomDirection = Math.floor(Math.random() * ship.directions.length);
@@ -117,7 +121,7 @@ generateShip = (ship) => {
     if(randomDirection === 1) direction = 10;
     let randomStart = Math.abs(Math.floor(Math.random() * computerSquares.length - (ship.directions[0].length * direction)));
 //CHECK TO SEE IF SQUARE IS TAKEN OR IF SHIP IS AT END OF GAME BOARD (SO NO SHIPS HANG OFF BOARD//
-//SATCKFLOW.COM AND W3SCHOOLS//
+//STACKFLOW.COM AND W3SCHOOLS//
 const isTaken = current.some(index => computerSquares[randomStart + index].classList.contains("taken"));
 const rightEnd = current.some(index => (randomStart + index) % width === width - 1);
 const leftEnd = current.some(index => (randomStart + index) % width === 0);
@@ -133,33 +137,9 @@ generateShip(shipArray[2]);
 generateShip(shipArray[3]);
 generateShip(shipArray[4]);
 
-
-// ROTATE SHIPS //
-
-// rotateShip = () => {
-//     if (isHorizontal){
-//         destroyer.classList.toggle("destroyer-container-vertical");
-//         submarine.classList.toggle("submarine-container-vertical");
-//         cruiser.classList.toggle("cruiser-container-vertical");
-//         battleship.classList.toggle("battleship-container-vertical");
-//         carrier.classList.toggle("carrier-container-vertical");
-//         isHorizontal = false;
-//         return;
-//     }
-//     if (!isHorizontal){
-//         destroyer.classList.toggle("destroyer-container");
-//         submarine.classList.toggle("submarine-container");
-//         cruiser.classList.toggle("cruiser-container");
-//         battleship.classList.toggle("battleship-container");
-//         carrier.classList.toggle("carrier-container");
-//         isHorizontal = true;
-//         return;
-//     }
-// }
-
-
-
+//============//
 // USER SHIPS //
+//============//
 
 generateShip = (ship) => {
     let randomDirection = Math.floor(Math.random() * ship.directions.length);
@@ -231,7 +211,7 @@ computerTurn = () => {
         if (userSquares[random].classList.contains("cruiser")) computerCruiserCount++
         if (userSquares[random].classList.contains("battleship")) computerBattleshipCount++
         if (userSquares[random].classList.contains("carrier")) computerCarrierCount++
-    
+        
     if (userSquares[random].classList.contains("taken")){
         userSquares[random].classList.add("kaboom")
     }
@@ -299,12 +279,9 @@ determineWin = () => {
     }
 }
 
-
-
 gameOver = () => {
     isGameOver = true
     startButton.removeEventListener("click", playGame)
-
  }
 
 
@@ -317,4 +294,3 @@ gameOver = () => {
 beginButton.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 startButton.addEventListener("click", playGame);
-// rotateButton.addEventListener("click", rotateShip);
